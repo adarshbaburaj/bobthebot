@@ -1,4 +1,4 @@
-# Tenant Maintenance AI Agent - MVP Demo
+# Bobthebot - Tenant Maintenance AI Agent - MVP Demo
 
 A minimal working prototype of an AI-powered tenant maintenance request system. Tenants message a Telegram bot with maintenance issues, and the system automatically classifies, prioritizes, estimates costs, and assigns vendors.
 
