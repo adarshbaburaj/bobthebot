@@ -1,0 +1,20 @@
+[
+  {
+    "name": "FastFix Plumbing",
+    "category": "Plumbing",
+    "rating": 4.7,
+    "notes": "24/7 emergency support"
+  },
+  {
+    "name": "CoolAir AC Services",
+    "category": "AC",
+    "rating": 4.5,
+    "notes": "Same-day AC fix"
+  },
+  {
+    "name": "HandyHome Repairs",
+    "category": "General",
+    "rating": 4.3,
+    "notes": "Minor fixes & handyman work"
+  }
+]
