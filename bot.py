@@ -14,7 +14,7 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 from dotenv import load_dotenv
 
-import mock_logic
+import ai_agent
 
 # Load environment variables from .env file
 load_dotenv()
@@ -57,8 +57,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         user_text = update.message.text
         logger.info(f"Received message: {user_text}")
 
-        # Analyze the issue using mock AI logic
-        analysis = mock_logic.analyze_issue(user_text)
+        # Analyze the issue using AI agent (Gemini)
+        analysis = ai_agent.analyze_issue(user_text)
 
         # Format the response
         response = format_response(analysis)
@@ -78,12 +78,17 @@ def format_response(analysis: dict) -> str:
     Format the analysis result into a nice message for the user
 
     Args:
-        analysis: Dict from mock_logic.analyze_issue()
+        analysis: Dict from ai_agent.analyze_issue()
 
     Returns:
         Formatted string message
     """
-    # Build the response message
+    # Check if AI needs clarification
+    if analysis.get('needs_clarification') and analysis.get('clarification_question'):
+        # Just ask the clarification question directly
+        return f"💬 {analysis['clarification_question']}"
+
+    # Build the normal response message
     response = "🛠 **Issue Received**\n\n"
     response += f"**Type:** {analysis['issue_type']}\n"
     response += f"**Priority:** {analysis['priority']}\n"
